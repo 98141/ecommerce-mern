@@ -2,12 +2,19 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "eslint.config.js",
+  "main": "src/server.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "cross-env NODE_ENV=test vitest run",
+    "test:watch": "cross-env NODE_ENV=test vitest",
+    "build": "node -e \"console.log('backend: sin paso de build, CommonJS Node')\"",
+    "seed:admin": "node src/seed/adminSeed.js"
   },
   "keywords": [],
   "author": "",
@@ -36,11 +43,13 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.5",
     "cross-env": "^10.1.0",
     "eslint": "^9.39.5",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "globals": "^17.7.0",
+    "mongodb-memory-server": "^10.1.4",
     "nodemon": "^3.1.14",
     "prettier": "^3.9.5",
     "supertest": "^7.2.2",
